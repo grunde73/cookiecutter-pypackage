@@ -3,6 +3,24 @@
 """The setup script."""
 
 from setuptools import setup, find_packages
+from os import path
+
+
+def read(rel_path):
+    here = path.abspath(path.dirname(__file__))
+    with open(path.join(here, rel_path), 'r') as fp:
+        return fp.read()
+
+
+def get_version(rel_path):
+    for line in read(rel_path).splitlines():
+        if line.startswith('__version__'):
+            delim = '"' if '"' in line else "'"
+            return line.split(delim)[1]
+    else:
+        raise RuntimeError("Unable to find version string.")
+
+
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -54,10 +72,14 @@ setup(
     include_package_data=True,
     keywords='{{ cookiecutter.project_slug }}',
     name='{{ cookiecutter.project_slug }}',
-    packages=find_packages(include=['{{ cookiecutter.project_slug }}', '{{ cookiecutter.project_slug }}.*']),
+    packages=find_packages(where='src',
+                           exclude=['contrib', 'docs', 'tests'],
+                           include=['{{ cookiecutter.project_slug }}',
+                                    '{{ cookiecutter.project_slug }}.*']),
+    package_dir={'': 'src'},
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
-    version='{{ cookiecutter.version }}',
+    version=get_version("src/{{ cookiecutter.project_slug }}/__init__.py"),
     zip_safe=False,
 )
