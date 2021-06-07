@@ -2,11 +2,17 @@
 #
 
 # You can set these variables from the command line.
-SPHINXOPTS    =
-SPHINXBUILD   = python -msphinx
+# SPHINXOPTS    =
+# SPHINXBUILD   = python -msphinx
+# SPHINXPROJ    = {{ cookiecutter.project_slug }}
+# SOURCEDIR     = .
+# BUILDDIR      = build
+
+SPHINXOPTS    ?=
+SPHINXBUILD   ?= sphinx-build
 SPHINXPROJ    = {{ cookiecutter.project_slug }}
 SOURCEDIR     = .
-BUILDDIR      = _build
+BUILDDIR      = build
 
 # Put it first so that "make" without argument is like "make help".
 help:
