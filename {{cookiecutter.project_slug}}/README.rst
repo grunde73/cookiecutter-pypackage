@@ -29,6 +29,43 @@
 * Documentation: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io.
 {% endif %}
 
+
+Quickstart
+----------
+.. code-block:: sh
+
+    git clone git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}.git
+    cd {{ cookiecutter.project_slug }}
+    pip install -e .
+    {{ cookiecutter.project_slug }} --help
+
+
+
+To develop, test, generate documentation, etc.
+.. code-block:: sh
+
+    pip install -r requirements_dev.txt
+
+    
+
+To genrate documentation do, either:
+.. code-block:: sh
+
+    make docs html 
+    
+
+
+or
+.. code-block:: sh
+
+    cd docs
+    sphinx-build -M html . build
+
+
+
+The html documentation will then be avaliable in ```docs/build/html/index.html```
+
+
 Features
 --------
 
