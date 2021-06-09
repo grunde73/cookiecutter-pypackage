@@ -12,10 +12,12 @@ import click_log
 
 
 logger = logging.getLogger(__name__)
-
 {% if cookiecutter.command_line_interface|lower == 'click' %}
+click_log.basic_config(logger)
+
+
 @click.command()
-@click_log.basic_config(logger)
+@click_log.simple_verbosity_option(logger)
 def main(args=None):
     """Console script for {{cookiecutter.project_slug}}."""
     click.echo("Replace this message by putting your code into "
