@@ -123,6 +123,8 @@ be a fork.
 * It's up to you whether or not to rename your fork/own version. Do whatever
   you think sounds good.
 
+Tull og toeys
+
 Or Submit a Pull Request
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
